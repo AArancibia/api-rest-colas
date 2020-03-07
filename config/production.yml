@@ -1,0 +1,6 @@
+db:
+  name: 'colas-prod'
+  host: 'localhost'
+  username: 'postgres'
+  password: '1234'
+  synchronize: false
