@@ -1,0 +1,6 @@
+db:
+  name: 'colas'
+  host: 'localhost'
+  username: 'postgres'
+  password: '1234'
+  synchronize: true

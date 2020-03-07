@@ -1,0 +1,7 @@
+server:
+  port: 3333
+
+db:
+  type: 'postgres'
+  port: 5432
+  logging: true
