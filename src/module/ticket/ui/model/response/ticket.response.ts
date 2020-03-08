@@ -1,11 +1,11 @@
 export class TicketResponse {
   idTicket: string;
-  correlativo: number;
   codigo: string;
+  correlativo: number;
 
-  constructor(idTicket: string, correlativo: number, codigo: string) {
+  constructor(idTicket: string, codigo: string, correlativo: number) {
     this.idTicket = idTicket;
-    this.correlativo = correlativo;
     this.codigo = codigo;
+    this.correlativo = correlativo;
   }
 }

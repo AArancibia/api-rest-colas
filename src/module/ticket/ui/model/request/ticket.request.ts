@@ -1,10 +1,11 @@
 export class TicketRequest{
   idticket: string;
-  correlativo: number;
   codigo: string;
-  constructor(
+  correlativo: number;
 
-  ){
-
+  constructor(idticket: string, codigo: string, correlativo: number) {
+    this.idticket = idticket;
+    this.codigo = codigo;
+    this.correlativo = correlativo;
   }
 }

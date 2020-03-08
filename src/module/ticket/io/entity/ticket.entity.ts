@@ -3,7 +3,9 @@ import { AuditEntity } from '../../../../core/base/audit.entity';
 
 @Entity('ticket')
 export class TicketEntity extends AuditEntity{
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid', {
+    name: 'idTicket'
+  })
   idticket: string;
 
   @Column('varchar', {
@@ -20,4 +22,12 @@ export class TicketEntity extends AuditEntity{
     comment: 'Correlative for the ticket.'
   })
   correlative: number;
+
+
+  constructor(idticket: string, code: string, correlative: number) {
+    super();
+    this.idticket = idticket;
+    this.code = code;
+    this.correlative = correlative;
+  }
 }

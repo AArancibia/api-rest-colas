@@ -1,15 +1,31 @@
 import { Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 export abstract class AuditEntity{
-  @Column('uuid')
-  idUserCreated: string;
-
-  @Column('uuid')
+  @Column('uuid', {
+    name: 'idUsuarioRegistro',
+    nullable: true,
+  })
   idUserRegister: string;
 
-  @CreateDateColumn()
-  creadted: Date;
+  @Column('uuid', {
+    name: 'idUsuarioModifico',
+    nullable: true,
+  })
+  idUserModified: string;
 
-  @UpdateDateColumn()
+  @CreateDateColumn({
+    name: 'fechaRegistro',
+  })
+  created: Date;
+
+  @UpdateDateColumn({
+    name: 'fechaModifico',
+  })
   updated: Date;
+
+  @Column('boolean', {
+    name: 'eliminado',
+    default: false
+  })
+  deleted: boolean;
 }
