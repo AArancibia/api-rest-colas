@@ -2,29 +2,29 @@ import { Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 export abstract class AuditEntity{
   @Column('uuid', {
-    name: 'idUsuarioRegistro',
+    name: 'IdUsuarioRegistro',
     nullable: true,
   })
   idUserRegister: string;
 
   @Column('uuid', {
-    name: 'idUsuarioModifico',
+    name: 'IdUsuarioModifico',
     nullable: true,
   })
   idUserModified: string;
 
   @CreateDateColumn({
-    name: 'fechaRegistro',
+    name: 'FechaRegistro',
   })
   created: Date;
 
   @UpdateDateColumn({
-    name: 'fechaModifico',
+    name: 'FechaModifico',
   })
   updated: Date;
 
   @Column('boolean', {
-    name: 'eliminado',
+    name: 'Eliminado',
     default: false
   })
   deleted: boolean;

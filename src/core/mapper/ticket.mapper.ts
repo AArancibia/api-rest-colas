@@ -6,11 +6,15 @@ import { TicketEntityBuilder } from '../../module/ticket/io/entity/ticket.entity
 import { TicketResponseBuilder } from '../../module/ticket/ui/model/response/ticket.response.builder';
 
 export class TicketMapper implements AdapterMapper<TicketRequest, TicketEntity, TicketResponse>{
-  mapperFromDtoToEntity(item: any): TicketEntity {
+  mapperFromDtoToEntity(item: TicketRequest): TicketEntity {
     return new TicketEntityBuilder()
-      .setIdticket(item.id)
+      .setIdticket(item.idTicket)
       .setCode(item.codigo)
       .setCorrelative(item.correlativo)
+      .setIdAdministrate(item.idAdministrado)
+      .setIdTicketType(item.idTipoTicket)
+      .setIdWindow(item.idVentanilla)
+      .setUrgent(item.urgente)
       .create();
   }
 
