@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColum
 import { AuditEntity } from '../../../../core/base/audit.entity';
 import { ParameterValueEntity } from '../../../parameter/io/entity/parameter-value.entity';
 import { TicketStatesEntity } from './ticket-states.entity';
+import { AdministrateEntity } from '../../../administrate/io/entity/administrate.entity';
 
 @Entity('ticket')
 export class TicketEntity extends AuditEntity{
@@ -36,21 +37,25 @@ export class TicketEntity extends AuditEntity{
   @JoinColumn({name: 'idWindow'})
   window: ParameterValueEntity;
 
-  @Column('int8', {
+  @Column('varchar', {
     name: 'IdVentanilla',
     nullable: true
   })
   idWindow: string;
 
   @ManyToOne(type => ParameterValueEntity, parameterValue => parameterValue.idParameterValue)
-  @JoinColumn({name: 'idTicketType'})
+  @JoinColumn({name: 'IdTipoTicket'})
   ticketType: ParameterValueEntity;
 
-  @Column('int8', {
+  @Column('varchar', {
     name: 'IdTipoTicket',
     nullable: true
   })
   idTicketType: string;
+
+  @ManyToOne(type => AdministrateEntity, administrate => administrate.idAdministrate)
+  @JoinColumn({name: 'IdAdministrado'})
+  administrate: AdministrateEntity;
 
   @Column('uuid', {
     name: 'IdAdministrado',
@@ -72,4 +77,5 @@ export class TicketEntity extends AuditEntity{
     this.idTicketType = idTicketType;
     this.idAdministrate = idAdministrate;
   }
+
 }

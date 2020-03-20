@@ -23,6 +23,12 @@ export class TicketMapper implements AdapterMapper<TicketRequest, TicketEntity, 
       .setIdticket(item.idticket)
       .setCodigo(item.code)
       .setCorrelativo(Number(item.correlative))
+      .setIdAdministrate(item.idAdministrate)
+      .setAdministrado(item.administrate)
+      .setIdTipoTicket(item.idTicketType)
+      .setIdVentanilla(item.idWindow)
+      .setTipoTicket(item.ticketType)
+      .setUrgente(item.urgent)
       .create();
   }
 
