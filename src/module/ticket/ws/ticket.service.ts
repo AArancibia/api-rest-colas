@@ -12,6 +12,7 @@ import { ParameterValueRepository } from '../../parameter/io/repository/paramete
 import { ParameterService } from '../../parameter/ws/parameter.service';
 import { ParameterValueEntity } from '../../parameter/io/entity/parameter-value.entity';
 import { ParameterValueService } from '../../parameter/ws/parameter-value.service';
+import { Between } from 'typeorm';
 
 @Injectable()
 export class TicketService implements TicketServiceImpl{
@@ -34,10 +35,11 @@ export class TicketService implements TicketServiceImpl{
       const currentTicket = ticketsEntity[i];
       const administrate = await this.adminisrateSrv.getAdministrateById(currentTicket.idAdministrate);
       const correlative = await this.getCorrelative(currentTicket.idTicketType);
-      const { name } = await this.parameterValueSrv.getParameterValueById(currentTicket.idTicketType);
-      const code = `${name}-${correlative}`;
+      const ticketType = await this.parameterValueSrv.getParameterValueById(currentTicket.idTicketType);
+      const code = `${ticketType.name.substring(0,1)}-${correlative}`;
       const ticketCreated = await this.ticketRepository.save({
         ...currentTicket,
+        ticketType,
         administrate,
         correlative,
         code
@@ -50,18 +52,22 @@ export class TicketService implements TicketServiceImpl{
   async getCorrelative(
     idTicketType: string
   ): Promise<number> {
-    console.log(idTicketType);
     const lastCorrelative = await this.ticketRepository.findOne(
       {
         where: {
           idTicketType,
-          created: DateHelper.dateToStringFormat(new Date(), 'YYYY-MM-DD')
+          created: Between(
+            DateHelper.dateToStringFormat(DateHelper.getCurrentDate(), 'YYYY-MM-DD'),
+            DateHelper.dateToStringFormat(DateHelper.addDays(DateHelper.getCurrentDate(), 1), 'YYYY-MM-DD')
+          )
         },
         select: ['correlative'],
-        order: { correlative: 1 }
+        order: { created: 'DESC' }
       }
     );
-    return lastCorrelative ? lastCorrelative.correlative++ : 1;
+    let correlativeReturn: number = lastCorrelative ? Number(lastCorrelative.correlative) : 0;
+    correlativeReturn++;
+    return correlativeReturn;
   }
 
 }

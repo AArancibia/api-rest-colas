@@ -4,6 +4,9 @@ import { TicketEntity } from '../../module/ticket/io/entity/ticket.entity';
 import { TicketResponse } from '../../module/ticket/ui/model/response/ticket.response';
 import { TicketEntityBuilder } from '../../module/ticket/io/entity/ticket.entity.builder';
 import { TicketResponseBuilder } from '../../module/ticket/ui/model/response/ticket.response.builder';
+import { AdministrateMapper } from './administrate.mapper';
+import { AdministrateResponseBuilder } from '../../module/administrate/ui/model/response/administrate.response.builder';
+import { ParameterValueResponseBuilder } from '../../module/parameter/ui/model/response/parameter-value.response.builder';
 
 export class TicketMapper implements AdapterMapper<TicketRequest, TicketEntity, TicketResponse>{
   mapperFromDtoToEntity(item: TicketRequest): TicketEntity {
@@ -24,10 +27,26 @@ export class TicketMapper implements AdapterMapper<TicketRequest, TicketEntity, 
       .setCodigo(item.code)
       .setCorrelativo(Number(item.correlative))
       .setIdAdministrate(item.idAdministrate)
-      .setAdministrado(item.administrate)
+      .setAdministrado(
+        new AdministrateResponseBuilder()
+          .setIdAdministrado(item.administrate.idAdministrate)
+          .setApellidos(item.administrate.lastName)
+          .setNombre(item.administrate.name)
+          .setNumeroDocumento(item.administrate.numberDocument)
+          .create()
+      )
       .setIdTipoTicket(item.idTicketType)
+      .setTipoTicket(
+        new ParameterValueResponseBuilder()
+          .setIdParametrotroValor(item.ticketType.idParameterValue)
+          .setIdParametro(item.ticketType.idParameter)
+          .setNombre(item.ticketType.name)
+          .setDescripcion(item.ticketType.description)
+          .setValorAdicional(item.ticketType.additionalValue)
+          .setValorAdicional2(item.ticketType.additionalValue2)
+          .create()
+      )
       .setIdVentanilla(item.idWindow)
-      .setTipoTicket(item.ticketType)
       .setUrgente(item.urgent)
       .create();
   }

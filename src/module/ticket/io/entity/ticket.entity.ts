@@ -13,9 +13,8 @@ export class TicketEntity extends AuditEntity{
 
   @Column('varchar', {
     name: 'Codigo',
-    unique: true,
     nullable: true,
-    comment: 'Code for the ticket. This is unique'
+    comment: 'Code for the ticket. This is unique in the day'
   })
   code: string;
 

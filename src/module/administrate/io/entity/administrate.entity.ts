@@ -23,4 +23,10 @@ export class AdministrateEntity {
   })
   numberDocument: string;
 
+  constructor(idAdministrate: string, name: string, lastName: string, numberDocument: string) {
+    this.idAdministrate = idAdministrate;
+    this.name = name;
+    this.lastName = lastName;
+    this.numberDocument = numberDocument;
+  }
 }

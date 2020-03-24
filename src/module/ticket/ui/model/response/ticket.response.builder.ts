@@ -1,6 +1,8 @@
 import { TicketResponse } from './ticket.response';
 import { ParameterValueEntity } from '../../../../parameter/io/entity/parameter-value.entity';
 import { AdministrateEntity } from '../../../../administrate/io/entity/administrate.entity';
+import { AdministrateResponse } from '../../../../administrate/ui/model/response/administrate.response';
+import { ParameterValueResponse } from '../../../../parameter/ui/model/response/parameter-value.response';
 
 export class TicketResponseBuilder{
   private _idticket: string;
@@ -8,10 +10,10 @@ export class TicketResponseBuilder{
   private _correlativo: number;
   private _urgente: boolean;
   private _idVentanilla: string;
-  private _tipoTicket: ParameterValueEntity;
+  private _tipoTicket: ParameterValueResponse;
   private _idTipoTicket: string;
-  private _administrado: AdministrateEntity;
-  private _idAdministrate: string;
+  private _administrado: AdministrateResponse;
+  private _idAdministrado: string;
 
   setIdticket(value: string): TicketResponseBuilder {
     this._idticket = value;
@@ -38,7 +40,7 @@ export class TicketResponseBuilder{
     return this;
   }
 
-  setTipoTicket(value: ParameterValueEntity): TicketResponseBuilder {
+  setTipoTicket(value: ParameterValueResponse): TicketResponseBuilder {
     this._tipoTicket = value;
     return this;
   }
@@ -48,13 +50,13 @@ export class TicketResponseBuilder{
     return this;
   }
 
-  setAdministrado(value: AdministrateEntity): TicketResponseBuilder {
+  setAdministrado(value: AdministrateResponse): TicketResponseBuilder {
     this._administrado = value;
     return this;
   }
 
   setIdAdministrate(value: string): TicketResponseBuilder {
-    this._idAdministrate = value;
+    this._idAdministrado = value;
     return this;
   }
 
@@ -68,7 +70,7 @@ export class TicketResponseBuilder{
       this._tipoTicket,
       this._idTipoTicket,
       this._administrado,
-      this._idAdministrate,
+      this._idAdministrado,
     );
   }
 }
