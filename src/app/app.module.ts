@@ -4,12 +4,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TicketModule } from '../module/ticket/ticket.module';
 import { ParameterModule } from '../module/parameter/parameter.module';
+import { GatewayModule } from '../core/gateway/gateway.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
     TicketModule,
-    ParameterModule
+    ParameterModule,
+    GatewayModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -15,6 +15,7 @@ import { ParameterModule } from '../parameter/parameter.module';
     ParameterModule,
   ],
   controllers: [TicketController],
-  providers: [TicketService, TicketMapper]
+  providers: [TicketService, TicketMapper],
+  exports: [TicketService]
 })
 export class TicketModule {}
