@@ -30,12 +30,6 @@ export class TicketGateway implements OnGatewayConnection{
     return client.id;
   }
 
-  @SubscribeMessage('[TICKET] GET TICKETS')
-  handleMessage(client: Socket, payload: any): void {//Promise<Array<TicketResponse>>
-    //client.send(await this.ticketSrv.getAllTickets());
-    //return await this.ticketSrv.getAllTickets();
-  }
-
   @SubscribeMessage('[TICKET] SAVE TICKETS')
   SocketNewTicket(client: Socket, payload: Array<TicketRequest>): void {//Promise<Array<TicketResponse>>
    // const tickets = await this.ticketSrv.saveTickets(payload);
