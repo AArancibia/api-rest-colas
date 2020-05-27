@@ -30,6 +30,10 @@ export class TicketGateway implements OnGatewayConnection{
     return client.id;
   }
 
+  anotherFunction() {
+
+  }
+
   @SubscribeMessage('[TICKET] GET TICKETS')
   handleMessage(client: Socket, payload: any): void {//Promise<Array<TicketResponse>>
     //client.send(await this.ticketSrv.getAllTickets());
