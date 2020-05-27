@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script>
+  const init = io('http://localhost:8091')
+    , ticket = io('http://localhost:8091/ticket');
+  ticket.on('connection',client => {
+    ticket.emit('[TICKET] GET TICKETS');
+  });
+  ticket.on('[TICKET] GET TICKETS', data => console.log(data));
+  init.on('connection', ( socket ) => {
+    ticket.emit('[TICKET] GET TICKETS');
+  })
+</script>
+</body>
+</html>

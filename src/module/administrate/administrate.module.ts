@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AdministrateController } from './ui/controller/administrate.controller';
-import { AdministrateService } from './ws/administrate.service';
-import { AdministrateEntity } from './io/entity/administrate.entity';
-import { AdministrateRepository } from './io/repository/administrate.repository';
+import { AdministrateController } from './controller/administrate.controller';
+import { AdministrateService } from './service/administrate.service';
+import { AdministrateEntity } from '../../core/entities/database/administrate.entity';
+import { AdministrateRepository } from './repository/administrate.repository';
 
 @Module({
   imports: [

@@ -1,12 +1,12 @@
 import { AdapterMapper } from './adapter.mapper';
-import { TicketRequest } from '../../module/ticket/ui/model/request/ticket.request';
-import { TicketEntity } from '../../module/ticket/io/entity/ticket.entity';
-import { TicketResponse } from '../../module/ticket/ui/model/response/ticket.response';
-import { TicketEntityBuilder } from '../../module/ticket/io/entity/ticket.entity.builder';
-import { TicketResponseBuilder } from '../../module/ticket/ui/model/response/ticket.response.builder';
+import { TicketRequest } from '../entities/request/ticket.request';
+import { TicketEntity } from '../entities/database/ticket.entity';
+import { TicketResponse } from '../entities/response/ticket.response';
+import { TicketEntityBuilder } from '../entities/database/ticket.entity.builder';
+import { TicketResponseBuilder } from '../entities/response/ticket.response.builder';
 import { AdministrateMapper } from './administrate.mapper';
-import { AdministrateResponseBuilder } from '../../module/administrate/ui/model/response/administrate.response.builder';
-import { ParameterValueResponseBuilder } from '../../module/parameter/ui/model/response/parameter-value.response.builder';
+import { AdministrateResponseBuilder } from '../entities/response/administrate.response.builder';
+import { ParameterValueResponseBuilder } from '../entities/response/parameter-value.response.builder';
 
 export class TicketMapper implements AdapterMapper<TicketRequest, TicketEntity, TicketResponse>{
   mapperFromDtoToEntity(item: TicketRequest): TicketEntity {

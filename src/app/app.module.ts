@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { TicketModule } from '../module/ticket/ticket.module';
 import { ParameterModule } from '../module/parameter/parameter.module';
 import { GatewayModule } from '../core/gateway/gateway.module';
+import { InitGateway } from '../core/gateway/init.gateway';
 
 @Module({
   imports: [

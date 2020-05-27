@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ParameterController } from './ui/controller/parameter.controller';
-import { ParameterService } from './ws/parameter.service';
-import { ParameterEntity } from './io/entity/parameter.entity';
-import { ParameterValueController } from './ui/controller/parameter-value.controller';
-import { ParameterValueService } from './ws/parameter-value.service';
-import { ParameterValueRepository } from './io/repository/parameter-value.repository';
-import { ParameterValueEntity } from './io/entity/parameter-value.entity';
+import { ParameterController } from './controller/parameter.controller';
+import { ParameterService } from './service/parameter.service';
+import { ParameterEntity } from '../../core/entities/database/parameter.entity';
+import { ParameterValueController } from './controller/parameter-value.controller';
+import { ParameterValueService } from './service/parameter-value.service';
+import { ParameterValueRepository } from './repository/parameter-value.repository';
+import { ParameterValueEntity } from '../../core/entities/database/parameter-value.entity';
 
 @Module({
   imports:[

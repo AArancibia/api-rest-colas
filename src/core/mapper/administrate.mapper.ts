@@ -1,7 +1,7 @@
 import { AdapterMapper } from './adapter.mapper';
-import { AdministrateRequest } from '../../module/administrate/ui/model/request/administrate.request';
-import { AdministrateEntity } from '../../module/administrate/io/entity/administrate.entity';
-import { AdministrateResponse } from '../../module/administrate/ui/model/response/administrate.response';
+import { AdministrateRequest } from '../entities/request/administrate.request';
+import { AdministrateEntity } from '../entities/database/administrate.entity';
+import { AdministrateResponse } from '../entities/response/administrate.response';
 
 export class AdministrateMapper implements AdapterMapper<AdministrateRequest, AdministrateEntity, AdministrateResponse> {
   mapperFromDtoToEntity(item: AdministrateRequest): AdministrateEntity {
